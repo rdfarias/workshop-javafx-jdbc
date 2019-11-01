@@ -7,6 +7,7 @@ import db.DbException;
 import gui.util.Alerts;
 import gui.util.Constraints;
 import gui.util.Utils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
@@ -46,7 +47,7 @@ public class DepartmentFormController implements Initializable {
 	}
 	
 	@FXML
-	public void onBtSaveAction() {
+	public void onBtSaveAction(ActionEvent event) {
 		if (entity == null) {
 			throw new IllegalStateException("Entity was null");
 		}
@@ -57,6 +58,7 @@ public class DepartmentFormController implements Initializable {
 		try {
 			entity = getFormData();
 			service.saveOrUpdate(entity);
+			Utils.currentStage(event).close();
 		}
 		catch (DbException e) {
 			Alerts.showAlert("Error saving object", null, e.getMessage(), AlertType.ERROR);
@@ -74,8 +76,8 @@ public class DepartmentFormController implements Initializable {
 	}
 
 	@FXML
-	public void onBtCancelAction() {
-		System.out.println("onBtCancelAction");
+	public void onBtCancelAction(ActionEvent event) {
+		Utils.currentStage(event).close();
 	}
 	
 	@Override
