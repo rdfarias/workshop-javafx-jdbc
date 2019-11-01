@@ -29,6 +29,7 @@ import model.services.DepartmentService;
 
 public class DepartmentListController implements Initializable {
 
+	@FXML
 	private DepartmentService service;
 	
 	@FXML
@@ -86,6 +87,7 @@ public class DepartmentListController implements Initializable {
 			
 			DepartmentFormController controller = loader.getController();
 			controller.setDepartment(obj);
+			controller.setDepartmentService(new DepartmentService());
 			controller.updateFormData();
 			
 			
