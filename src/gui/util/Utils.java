@@ -8,6 +8,8 @@ import java.util.Locale;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+
+
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -29,6 +31,16 @@ public class Utils {
 		}
 
 	}
+	
+	public static Double tryParseToDouble(String str) {
+		try {
+			return Double.parseDouble(str);
+		} catch (NumberFormatException e) {
+			return null;
+		}
+
+	}
+	
 
 	public static <T> void formatTableColumnDate(TableColumn<T, Date> tableColumn, String format) {
 		tableColumn.setCellFactory(column -> {
